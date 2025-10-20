@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rushi Dasvante — Java Developer</title>
+  <meta name="description" content="Portfolio of Rushi Dasvante — Java Backend Developer. Showcasing projects, skills, and experience." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0f1e;
+      --bg-light: #131b2e;
+      --accent: #00c2ff;
+      --secondary: #8b5cf6;
+      --text: #e6eef6;
+      --muted: #9aaac2;
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #090e1b, #0b1429 70%, #0e172e);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.3);
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    .brand i {
+      color: var(--accent);
+      font-size: 1.6rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    nav a:hover, nav a.active {
+      color: var(--accent);
+    }
+
+    .btn {
+      background: linear-gradient(135deg, var(--accent), var(--secondary));
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    section { padding: 80px 10%; }
+    h1, h2, h3, h4 { color: #fff; }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+    .hero-content {
+      max-width: 550px;
+    }
+    .hero-content h1 {
+      font-size: 2.8rem;
+      background: linear-gradient(135deg, var(--accent), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-content p {
+      color: var(--muted);
+      margin-top: 15px;
+      font-size: 1.1rem;
+    }
+
+    .hero img {
+      width: 300px;
+      border-radius: 50%;
+      box-shadow: var(--shadow);
+      transition: transform 0.5s ease;
+    }
+    .hero img:hover {
+      transform: scale(1.05) rotate(2deg);
+    }
+
+    /* Cards */
+    .card {
+      background: rgba(255,255,255,0.05);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: 0.3s;
+      backdrop-filter: blur(6px);
+    }
+    .card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.08); }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+    .skill-card {
+      background: linear-gradient(135deg, rgba(0,194,255,0.15), rgba(139,92,246,0.15));
+      border: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      padding: 25px 15px;
+      border-radius: var(--radius);
+      transition: 0.3s;
+    }
+    .skill-card:hover {
+      background: linear-gradient(135deg, var(--accent), var(--secondary));
+      color: #fff;
+      animation: pulse 1s ease infinite alternate;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 10px rgba(0,194,255,0.3);}
+      100% { transform: scale(1.05); box-shadow: 0 0 25px rgba(0,194,255,0.6);}
+    }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+    .project {
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 0 rgba(0,0,0,0);
+    }
+    .project:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0, 194, 255, 0.2), 0 0 15px rgba(0,194,255,0.2);
+    }
+    .project h4 { color: var(--accent); }
+    .project p { color: var(--muted); font-size: 0.95rem; }
+
+    /* Contact */
+    .contact-form {
+      display: grid;
+      gap: 15px;
+      max-width: 400px;
+    }
+    input, textarea {
+      background: rgba(255,255,255,0.05);
+      border: none;
+      padding: 10px 15px;
+      border-radius: var(--radius);
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+    }
+    textarea { resize: none; }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 20px;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Scroll Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media(max-width: 768px){
+      nav { flex-direction: column; gap: 10px; }
+      .hero { flex-direction: column; text-align: center; }
+      .hero img { width: 220px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="brand"><i class="ri-code-s-slash-fill"></i>Rushi Dasvante</div>
+      <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="Resume.pdf" class="btn">Download CV</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero reveal">
+    <div class="hero-content">
+      <h1>Hello,<br> I'm Rushi Dasvante</h1>
+      <p>Java Backend Developer from Pune, skilled in Core Java and creating robust web applications using Spring Boot, Hibernate, and REST APIs. Passionate about backend architecture, clean code, and exploring modern frameworks to build impactful software solutions.</p>
+      <p><span id="typing-text"></span></p>
+      <div style="margin-top:20px; display:flex; gap:15px; flex-wrap:wrap;">
+        <a href="#projects" class="btn">View My Work</a>
+        <a href="#contact" class="btn" style="background:transparent; border:1px solid var(--accent); color:var(--accent)">Let's Connect</a>
+      </div>
+    </div>
+    <img src="profilepic.jpeg" alt="developer illustration" />
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about" class="reveal">
+    <h2>About Me</h2>
+    <div style="margin-top:30px; display:flex; flex-direction:column; gap:20px;">
+      <div class="card reveal">
+        <h4>Career Objective</h4>
+        <p>Motivated and detail-oriented Java Backend Developer with strong knowledge of Core Java, JDBC, Servlets, Hibernate, Spring Boot, REST APIs, and Microservices. Passionate about building scalable applications and exploring modern frameworks such as Spring Security, Redis, Kafka, and OAuth2.</p>
+      </div>
+      <div class="card reveal">
+        <h4>Professional Summary</h4>
+        <p>2.5 years hands-on experience in building web applications with Spring Boot, Hibernate, JDBC, and Servlets. Skilled in RESTful API design, database management with MySQL, unit testing (JUnit 5), Git version control, and API testing (Postman). Familiar with MVC, multithreading, and microservices. Also has basic frontend skills in HTML, CSS, and JavaScript. Experienced in Agile environments and exploring AI and LLM workflows through research.</p>
+      </div>
+      <div class="card reveal">
+        <h4>Education</h4>
+        <p>Bachelor of Science in Computer Science, Savitribai Phule Pune University – 2025</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="reveal">
+    <h2>Projects</h2>
+    <div class="projects" style="margin-top:30px; display:grid; grid-template-columns:repeat(auto-fit, minmax(350px, 1fr)); gap:30px;">
+
+      <div class="project reveal">
+        <h4>Job Portal Application</h4>
+        <p>Full-stack web application for creating, searching, and deleting job postings. Implemented REST APIs with Spring Boot, layered architecture, MongoDB persistence, and responsive frontend with HTML, CSS, and JavaScript.</p>
+        <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
+          <span style="background:#00c2ff33; color:#00c2ff; padding:4px 8px; border-radius:6px; font-size:0.8rem;">Java</span>
+          <span style="background:#8b5cf633; color:#8b5cf6; padding:4px 8px; border-radius:6px; font-size:0.8rem;">Spring Boot</span>
+          <span style="background:#f2a36533; color:#f2a365; padding:4px 8px; border-radius:6px; font-size:0.8rem;">MongoDB</span>
+          <span style="background:#ff6b6b33; color:#ff6b6b; padding:4px 8px; border-radius:6px; font-size:0.8rem;">HTML/CSS/JS</span>
+        </div>
+        <div style="margin-top:10px;">
+          <a href="https://github.com/RushiDasvante/JobPortal" target="_blank" class="btn" style="padding:4px 10px; font-size:0.8rem;">GitHub</a>
+        </div>
+      </div>
+
+      <div class="project reveal">
+        <h4>Online Railway Reservation System</h4>
+        <p>Spring Boot-based reservation system with MySQL backend and JavaScript frontend. Features secure login, train management, ticket booking/cancellation, session handling, and real-time seat availability updates.</p>
+        <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
+          <span style="background:#00c2ff33; color:#00c2ff; padding:4px 8px; border-radius:6px; font-size:0.8rem;">Java</span>
+          <span style="background:#8b5cf633; color:#8b5cf6; padding:4px 8px; border-radius:6px; font-size:0.8rem;">Spring Boot</span>
+          <span style="background:#f2a36533; color:#f2a365; padding:4px 8px; border-radius:6px; font-size:0.8rem;">MySQL</span>
+          <span style="background:#ff6b6b33; color:#ff6b6b; padding:4px 8px; border-radius:6px; font-size:0.8rem;">HTML/CSS/JS</span>
+        </div>
+        <div style="margin-top:10px;">
+          <a href="https://github.com/RushiDasvante/OnlineReservationSystem-SB" target="_blank" class="btn" style="padding:4px 10px; font-size:0.8rem;">GitHub</a>
+        </div>
+      </div>
+
+      <div class="project reveal">
+        <h4>Online Examination System</h4>
+        <p>Full-stack online examination system with user authentication, timer-based exams, and real-time result calculation using Spring Boot and MySQL.</p>
+        <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
+          <span style="background:#00c2ff33; color:#00c2ff; padding:4px 8px; border-radius:6px; font-size:0.8rem;">Java</span>
+          <span style="background:#8b5cf633; color:#8b5cf6; padding:4px 8px; border-radius:6px; font-size:0.8rem;">Spring Boot</span>
+          <span style="background:#f2a36533; color:#f2a365; padding:4px 8px; border-radius:6px; font-size:0.8rem;">MySQL</span>
+          <span style="background:#ff6b6b33; color:#ff6b6b; padding:4px 8px; border-radius:6px; font-size:0.8rem;">REST APIs</span>
+        </div>
+        <div style="margin-top:10px;">
+          <a href="https://github.com/RushiDasvante/OnlineExamApplication" target="_blank" class="btn" style="padding:4px 10px; font-size:0.8rem;">GitHub</a>
+        </div>
+      </div>
+
+      <div class="project reveal">
+        <h4>ATM Simulation</h4>
+        <p>The ATM Management System is a Spring Boot application that simulates real-world ATM functionalities such as user login, balance inquiry, deposits, withdrawals, money transfers, and transaction history tracking. It uses Spring Boot, Spring Data JPA, and MySQL for backend logic and persistent data storage.</p>
+        <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
+          <span style="background:#00c2ff33; color:#00c2ff; padding:4px 8px; border-radius:6px; font-size:0.8rem;">Java</span>
+          <span style="background:#ff6b6b33; color:#ff6b6b; padding:4px 8px; border-radius:6px; font-size:0.8rem;">Spring Boot</span>
+          <span style="background:#f2a36533; color:#f2a365; padding:4px 8px; border-radius:6px; font-size:0.8rem;">MySql</span>
+        </div>
+        <div style="margin-top:10px;">
+          <a href="https://github.com/RushiDasvante/ATM_application" target="_blank" class="btn" style="padding:4px 10px; font-size:0.8rem;">GitHub</a>
+        </div>
+      </div>
+       <div class="project reveal">
+        <h4>Java Number Guessing Game</h4>
+        <p>The Number Guessing Game is a fun and interactive console-based Java where user can make guess the number which is generated by game in 7 attemptss</p>
+        <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
+          <span style="background:#00c2ff33; color:#00c2ff; padding:4px 8px; border-radius:6px; font-size:0.8rem;">Java</span>
+          <span style="background:#ff6b6b33; color:#ff6b6b; padding:4px 8px; border-radius:6px; font-size:0.8rem;">OOP</span>
+          
+        </div>
+        <div style="margin-top:10px;">
+          <a href="https://github.com/RushiDasvante/Number_Guessing_Game" target="_blank" class="btn" style="padding:4px 10px; font-size:0.8rem;">GitHub</a>
+        </div>
+      </div>
+      <div class="project reveal">
+        <h4>Handwave Audio Controller</h4>
+        <p>The HandWave Audio Controller is a Python-based application that leverages computer vision to allow users to control the audio volume of their system using hand gestures. By using a webcam, the application detects specific hand gestures in real-time and translates them into commands to adjust the system's audio volume.</p>
+        <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
+          <span style="background:#00c2ff33; color:#00c2ff; padding:4px 8px; border-radius:6px; font-size:0.8rem;">Python</span>
+          <span style="background:#ff6b6b33; color:#ff6b6b; padding:4px 8px; border-radius:6px; font-size:0.8rem;">OpenCv</span>
+          
+        </div>
+        <div style="margin-top:10px;">
+          <a href="https://github.com/RushiDasvante/HandWave_Audio_Controller" target="_blank" class="btn" style="padding:4px 10px; font-size:0.8rem;">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Skills Section -->
+  <section id="skills" class="reveal">
+    <h2>Technical Skills</h2>
+    <div class="skills-grid" style="margin-top:30px;">
+      <div class="skill-card"><i class="ri-java-line" style="font-size:2rem;"></i><h4>Java</h4></div>
+      <div class="skill-card"><i class="ri-leaf-line" style="font-size:2rem;"></i><h4>Spring Boot</h4></div>
+      <div class="skill-card"><i class="ri-braces-line" style="font-size:2rem;"></i><h4>Hibernate</h4></div>
+      <div class="skill-card"><i class="ri-database-2-line" style="font-size:2rem;"></i><h4>MySQL</h4></div>
+      <div class="skill-card"><i class="ri-terminal-window-line" style="font-size:2rem;"></i><h4>RESTful APIs</h4></div>
+      <div class="skill-card"><i class="ri-file-code-line" style="font-size:2rem;"></i><h4>JSP & Servlets</h4></div>
+      <div class="skill-card"><i class="ri-settings-4-line" style="font-size:2rem;"></i><h4>JDBC</h4></div>
+      <div class="skill-card"><i class="ri-code-box-line" style="font-size:2rem;"></i><h4>HTML, CSS, JavaScript</h4></div>
+      <div class="skill-card"><i class="ri-git-branch-line" style="font-size:2rem;"></i><h4>Git & GitHub</h4></div>
+      <div class="skill-card"><i class="ri-tools-line" style="font-size:2rem;"></i><h4>Maven & Postman</h4></div>
+      <div class="skill-card"><i class="ri-computer-line" style="font-size:2rem;"></i><h4>Eclipse & IntelliJ IDEA</h4></div>
+    </div>
+  </section>
+
+  <!-- Soft Skills Section -->
+  <section id="soft-skills" class="reveal">
+    <h2>Soft Skills</h2>
+    <div class="skills-grid" style="margin-top:30px;">
+      <div class="skill-card" style="background:rgba(255,255,255,0.1);"><h4>Problem Solving</h4></div>
+      <div class="skill-card" style="background:rgba(255,255,255,0.1);"><h4>Team Collaboration</h4></div>
+      <div class="skill-card" style="background:rgba(255,255,255,0.1);"><h4>Communication</h4></div>
+      <div class="skill-card" style="background:rgba(255,255,255,0.1);"><h4>Time Management</h4></div>
+      <div class="skill-card" style="background:rgba(255,255,255,0.1);"><h4>Critical Thinking</h4></div>
+      <div class="skill-card" style="background:rgba(255,255,255,0.1);"><h4>Adaptability</h4></div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="reveal">
+    <h2>Contact</h2>
+    <div style="display:flex;gap:40px;flex-wrap:wrap;margin-top:30px;align-items:flex-start">
+
+      <form class="contact-form" action="https://formspree.io/f/mrbydwyo" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button class="btn" type="submit">Send</button>
+        <p id="msg" style="font-size:0.9rem;color:var(--muted)"></p>
+      </form>
+
+      <div>
+        <h3>Let's Connect</h3>
+        <p class="muted">Email: rushidaswante2004@gmail.com</p>
+        <p class="muted">Location: Pune, Maharashtra</p>
+        <div style="margin-top:15px;display:flex;gap:20px;font-size:1.5rem;">
+          <a href="https://github.com/RushiDasvante" style="color:var(--accent)"><i class="ri-github-fill"></i></a>
+          <a href="https://linkedin.com/in/rushi-daswante" style="color:var(--accent)"><i class="ri-linkedin-box-fill"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Rushi Dasvante. All rights reserved.
+  </footer>
+
+  <script>
+    // Typing effect
+    const texts = ["Java Backend Developer", "Spring Boot Enthusiast", "REST API Builder", "Open to Opportunities"];
+    let count = 0;
+    let index = 0;
+    let currentText = '';
+    let letter = '';
+    (function type(){
+      if(count === texts.length) count = 0;
+      currentText = texts[count];
+      letter = currentText.slice(0, ++index);
+      document.getElementById('typing-text').textContent = letter;
+      if(letter.length === currentText.length){
+        setTimeout(()=>{
+          index = 0;
+          count++;
+          type();
+        },1500);
+      } else{
+        setTimeout(type,150);
+      }
+    }());
+
+    // Scroll Reveal
+    const reveals = document.querySelectorAll(".reveal");
+    window.addEventListener("scroll", function(){
+      for(let i=0;i<reveals.length;i++){
+        const windowHeight = window.innerHeight;
+        const elementTop = reveals[i].getBoundingClientRect().top;
+        const revealPoint = 150;
+        if(elementTop < windowHeight - revealPoint){
+          reveals[i].classList.add("active");
+        }
+      }
+    });
+  </script>
+  <script>
+const form = document.querySelector('.contact-form');
+const msg = document.getElementById('msg');
+
+form.addEventListener('submit', async function(e) {
+  e.preventDefault(); // Prevent page redirect
+
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: formData
+    });
+
+    if (response.ok) {
+      msg.textContent = 'Thank you! Your message has been sent.';
+      form.reset();
+      setTimeout(() => { msg.textContent = ''; }, 4000);
+    } else {
+      msg.textContent = 'Oops! Something went wrong. Please try again.';
+    }
+  } catch (error) {
+    msg.textContent = 'Oops! Something went wrong. Please try again.';
+  }
+});
+</script>
+
+</body>
+</html>
