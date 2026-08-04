@@ -3,8 +3,8 @@
 This is the personal portfolio of **Rushi Dasvante**, a Java Backend Developer. The portfolio showcases skills, projects, and contact information in a modern, responsive design.
 
 ## 🔗 Portfolio Link
-[View Live Portfolio](https://rushidaswante.github.io)  
-
+[
+(https://rushidasvante.github.io/My_Portfolio/)}
 ## 🛠 Technologies Used
 - **Frontend:** HTML5, CSS3, JavaScript  
 - **Design & UI:** Responsive layout, dynamic project cards, hover effects  
